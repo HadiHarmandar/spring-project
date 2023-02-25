@@ -11,9 +11,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Dimensions {
 
-    private int width = 10;
-    private int height = 30;
-    private int depth = 40;
+    private int width;
+    private int height;
+    private int depth;
+
+    public Dimensions() {
+        this.width = 10;
+        this.height = 30;
+        this.depth = 40;
+    }
 
     private void pressPowerButton() {
         System.out.println("Power button pressed");
