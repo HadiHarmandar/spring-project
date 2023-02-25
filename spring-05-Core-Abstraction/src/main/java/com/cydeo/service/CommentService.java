@@ -3,7 +3,9 @@ package com.cydeo.service;
 import com.cydeo.model.Comment;
 import com.cydeo.proxy.CommentNotificationProxy;
 import com.cydeo.repository.CommentRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CommentService {
 
     private CommentRepository dbCommentRepository;
