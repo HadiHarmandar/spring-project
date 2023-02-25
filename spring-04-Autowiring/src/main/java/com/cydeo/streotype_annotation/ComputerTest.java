@@ -12,5 +12,7 @@ public class ComputerTest {
 
         PC mtPc = container.getBean(PC.class);
 
+        System.out.println(mtPc.getTheCase().getDimensions().getDepth());
+
     }
 }
