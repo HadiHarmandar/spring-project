@@ -8,8 +8,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommentService {
 
-    private CommentRepository dbCommentRepository;
-    private CommentNotificationProxy commentNotificationProxy;
+    private final CommentRepository dbCommentRepository;
+    private final CommentNotificationProxy commentNotificationProxy;
+
+    public CommentService(CommentRepository dbCommentRepository, CommentNotificationProxy commentNotificationProxy) {
+        this.dbCommentRepository = dbCommentRepository;
+        this.commentNotificationProxy = commentNotificationProxy;
+    }
 
     public void publishComment(Comment comment) {
         // save in the DB
