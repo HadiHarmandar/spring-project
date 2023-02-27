@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfigData {
 
     @Value("${username}")
-    private String userName;
+    private String username;
 
     @Value("${password}")
     private String password;
