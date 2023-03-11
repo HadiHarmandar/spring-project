@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+
+    <table>
+
+        <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip Code</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${practice.firstName}"></td>
+            <td th:text="${practice.lastName}"></td>
+            <td th:text="${practice.birthday}"></td>
+            <td th:text="${practice.address}"></td>
+            <td th:text="${practice.city}"></td>
+            <td th:text="${practice.state}"></td>
+            <td th:text="${practice.zip}"></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</div>
+
+</body>
+</html>
