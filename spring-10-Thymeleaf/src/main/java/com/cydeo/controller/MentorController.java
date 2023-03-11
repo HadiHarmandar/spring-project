@@ -29,7 +29,7 @@ public class MentorController {
     @PostMapping("/confirm")
     public String submitForm(@ModelAttribute("mentor") Mentor  mentor) {
 
-
+        // save mentor object in DB ==> next step
 //        return "mentor/mentor-register";
         return "redirect:/mentor/register";
     }
