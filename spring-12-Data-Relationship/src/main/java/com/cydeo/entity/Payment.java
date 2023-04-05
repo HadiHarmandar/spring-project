@@ -26,6 +26,10 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private Status paymentStatus;
 
+    @OneToOne
+    @JoinColumn(name = "payment_detail_id")
+    private PaymentDetail paymentDetail;
+
     public Payment(LocalDate cratedDate, BigDecimal amount, Status paymentStatus) {
         this.cratedDate = cratedDate;
         this.amount = amount;
