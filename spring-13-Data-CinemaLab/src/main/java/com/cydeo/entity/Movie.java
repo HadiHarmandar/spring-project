@@ -34,7 +34,7 @@ public class Movie extends BaseEntity {
     private MovieState state;
 
     @ManyToMany
-    @JoinTable(name = "MovieGenreRel",
+    @JoinTable(name = "movie_genre_rel",
     joinColumns = @JoinColumn(name = "movie_id"),
     inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genreList;
