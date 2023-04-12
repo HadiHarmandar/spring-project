@@ -4,6 +4,7 @@ import com.cydeo.enums.UserRole;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "account_details")
+@ToString
 public class Account extends BaseEntity {
 
     private String name;
