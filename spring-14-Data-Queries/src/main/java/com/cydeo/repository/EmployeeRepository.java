@@ -81,7 +81,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     // SORTING in Asc Order
     @Query("SELECT e.salary FROM Employee e ORDER BY e.salary")
-    List<Employee> retrieveEmployeeSalaryOrderAsc();
+    List<Integer> retrieveEmployeeSalaryOrderAsc();
 
 
     // SORTING in Desc Order
