@@ -5,6 +5,7 @@ import com.cydeo.enums.MovieType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Movie extends BaseEntity {
 
     private String name;

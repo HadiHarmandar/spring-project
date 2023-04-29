@@ -3,6 +3,7 @@ package com.cydeo.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
+//@ToString
 public class Location extends BaseEntity {
 
     private String name;

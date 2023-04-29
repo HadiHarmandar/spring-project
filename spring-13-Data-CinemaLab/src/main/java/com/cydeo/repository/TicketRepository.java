@@ -17,7 +17,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     // ------------------- DERIVED QUERIES ------------------- //
 
     //Write a derived query to count how many tickets a user bought
-    Integer countByUserAccount(User user);
+    Integer countByUserAccountId(Long userId);
 
     //Write a derived query to list all tickets by specific email
     List<Ticket> findByUserAccount_Email(String email);
@@ -45,13 +45,13 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     Integer countAllTicketsUserBuy(@Param("id") Long id);
 
     //Write a native query to count the number of tickets a user bought in a specific range of dates
-    @Query(value = "SELECT COUNT(*) FROM ticket WHERE date_time BETWEEN ?1 AND ?2", nativeQuery = true)
-    Integer countAllTicketsForSpecificDates(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    @Query(value = "SELECT COUNT(*) FROM ticket WHERE user_account_id = ?1 AND date_time BETWEEN ?2 AND ?3", nativeQuery = true)
+    Integer countAllTicketsForSpecificDates(@Param("userId") Long userId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
     //Write a native query to distinct all tickets by movie name
-    @Query(value = "SELECT DISTINCT * FROM ticket t JOIN movie_cinema mc ON t.movie_cinema_id = mc.id " +
-            "JOIN movie m ON m.id = mc.movie_id WHERE m.name = ?1", nativeQuery = true)
-    List<Ticket> distinctAllTicketsByMovieName(@Param("name") String name);
+    @Query(value = "SELECT DISTINCT m.name FROM ticket t JOIN movie_cinema mc ON t.movie_cinema_id = mc.id " +
+            "JOIN movie m ON m.id = mc.movie_id", nativeQuery = true)
+    List<Ticket> distinctAllTicketsByMovieName();
 
     //Write a native query to find all tickets by user email
     @Query(value = "SELECT * FROM ticket t JOIN user_account ua ON t.user_account_id = ua.id " +

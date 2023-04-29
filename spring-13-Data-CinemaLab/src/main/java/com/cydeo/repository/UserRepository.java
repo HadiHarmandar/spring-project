@@ -6,16 +6,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
     // ------------------- DERIVED QUERIES ------------------- //
 
     //Write a derived query to read a user with an email?
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
     //Write a derived query to read a user with a username?
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
 
     //Write a derived query to list all users that contain a specific name?
     List<User> findByAccountNameContains(String account_name);
@@ -30,11 +31,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //Write a JPQL query that returns a user read by email?
     @Query("SELECT u FROM User u WHERE u.email = ?1")
-    User retrieveByEmail(@Param("email") String email);
+    Optional<User> retrieveByEmail(@Param("email") String email);
 
     //Write a JPQL query that returns a user read by username?
     @Query("SELECT u FROM User u WHERE u.username = ?1")
-    User retrieveByUserName(@Param("username") String username);
+    Optional<User> retrieveByUserName(@Param("username") String username);
 
     //Write a JPQL query that returns all users?
     @Query("SELECT u FROM User u")
@@ -43,7 +44,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query that returns all users that contain a specific name?
-    @Query(value = "SELECT * FROM user_account ua JOIN account_detail ad ON ua.account_detail_id = ad.id " +
+    @Query(value = "SELECT * FROM user_account ua JOIN account_details ad ON ua.account_detail_id = ad.id " +
             "WHERE ad.name ILIKE concat('%', ?1, '%')", nativeQuery = true)
     List<User> retrieveUsersContainsSpecificName(@Param("name") String name);
 
@@ -52,8 +53,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> allUsersByNativeQuery();
 
     //Write a native query that returns all users in the range of ages?
-    @Query(value = "SELECT * FROM user_account ua JOIN account_detail ad " +
-            "ON ua.account_detail_id = ad.id " +
+    @Query(value = "SELECT * FROM user_account ua JOIN account_details ad " +
+            "ON ua.account_details_id = ad.id " +
             "WHERE ad.age BETWEEN ?1 AND ?2", nativeQuery = true)
     List<User> retrieveUserByRangeOfAge(@Param("age1") Integer age1, @Param("age2") Integer age2);
 
