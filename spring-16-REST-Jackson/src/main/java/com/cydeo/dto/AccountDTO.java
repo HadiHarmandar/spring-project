@@ -7,7 +7,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"city", "age", "postalCode"})
+// @JsonIgnoreProperties(value = {"city", "age", "postalCode"})// multiple field to hide // , allowSetters = true
 public class AccountDTO {
 
     private String name;
