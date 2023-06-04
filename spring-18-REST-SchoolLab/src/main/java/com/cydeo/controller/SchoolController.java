@@ -1,5 +1,6 @@
 package com.cydeo.controller;
 
+import com.cydeo.dto.AddressDTO;
 import com.cydeo.dto.ResponseWrapper;
 import com.cydeo.dto.TeacherDTO;
 import com.cydeo.service.AddressService;
@@ -8,9 +9,7 @@ import com.cydeo.service.StudentService;
 import com.cydeo.service.TeacherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -60,6 +59,14 @@ public class SchoolController {
     create en endpoint to update individual address information.
     return updated address directly
      */
+
+    @PutMapping("/address/{id}")
+    public ResponseEntity<ResponseWrapper> updateAddress(@PathVariable Long id, @RequestBody AddressDTO addressDTO) throws Exception {
+        addressDTO.setId(id);
+        return ResponseEntity.ok(new ResponseWrapper("Address updated", addressService.update(addressDTO)));
+    }
+
+
 
     // b1cf7afe3c2828d0cf3edb3692cd8c8c --> access key
 

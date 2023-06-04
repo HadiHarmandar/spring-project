@@ -1,10 +1,13 @@
 
-package com.cydeo.dto;
+package com.cydeo.dto.weather;
+
+import lombok.Getter;
 
 import java.util.List;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
+@Getter
 public class Current {
 
     public String observationTime;

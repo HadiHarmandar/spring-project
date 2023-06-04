@@ -1,10 +1,13 @@
 
-package com.cydeo.dto;
+package com.cydeo.dto.weather;
+
+import lombok.Getter;
 
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Weather {
+@Getter
+public class WeatherDTO {
 
     public Request request;
     public Location location;
