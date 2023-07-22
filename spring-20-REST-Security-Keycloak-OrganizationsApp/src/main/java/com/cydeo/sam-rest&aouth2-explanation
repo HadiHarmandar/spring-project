@@ -1,0 +1,58 @@
+Design Principles of Restful API
+
+1- Naming
+    a- Simple as much as you can
+        /retrieveAllStudents
+        /retrieveStudentById/1
+
+        /students
+        /students/1
+    b- sub resources how you can choose a better name for a sub resource, if we want you to create endpoint.
+        /employees -> id
+        /tasks -> name
+        /employees/{id}/task/{name}
+
+2- Http Methods
+    POST -> create a resource /api/v1/students, /api/v1/createStudent - Redundant
+    PUT -> update
+    GET -> retrieve /students, /retrieveStudents
+    DELETE -> delete
+
+3- Http Error Handling
+    GlobalExceptionHandler
+        For Method level -> @ExceptionHandler
+        For Class level -> @RestControllerAdvice or @ControllerAdvice
+    CustomExceptions -> NotFoundException, BalanceNotSufficientException
+
+    CONFLICT(409, HttpStatus.Series.CLIENT_ERROR, "Conflict"),
+    Client Exceptions -> 4xx
+                send invalid ids, access invalid resource
+    Server Errors -> 5xx
+                null pointer Exception
+    Success -> 2XX
+                No Exception
+
+4- Versioning (Backward Compability)
+        api/v1/employee
+        api/v2/employee
+
+5- proper/identifiable messages schemas
+    ResponseWrapper -> custom class for messages that we show to the end user
+
+6- No business logic in controller. NO!
+
+7- Use DTO/Request & Response object instead of ENTITY object
+
+8- Documentation - Swagger/ OpenApi spec.
+
+9- Pagination
+
+-----------------------------
+
+SECURITY
+
+Authorization & Authentication
+
+Standard authorization flow and oAuth2 flow
+
+Standard authorization flow --> Username and password -- KEY
